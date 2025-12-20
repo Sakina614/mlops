@@ -1,0 +1,4 @@
+panadas 
+seaborn
+numpy
+

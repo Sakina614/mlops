@@ -10,7 +10,7 @@ from sklearn.preprocessing import OneHotEncoder,StandardScaler
 
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import save_object
+from src.utils import save_object, evaluate_models 
 
 @dataclass
 class DataTransformationConfig:
@@ -34,7 +34,7 @@ class DataTransformation:
             # Categorical pipeline
             cat_pipeline = Pipeline(steps=[
               ('imputer', SimpleImputer(strategy='most_frequent')),
-              ('onehot', OneHotEncoder()),
+              ('onehot', OneHotEncoder(handle_unknown="ignore")),
               ('scaler', StandardScaler(with_mean=False))
             ])
 
@@ -85,7 +85,6 @@ class DataTransformation:
                 obj=preprocessor_obj
             )
 
-            return (train_arr, test_arr, self.data_transformation_config.preprocessor_obj_file_path)
-
+            return (train_arr, test_arr)
         except Exception as e:
             raise CustomException(e, sys)

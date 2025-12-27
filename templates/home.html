@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Exam Performance Prediction</title>
+</head>
+<body>
+
+    <h1>Student Exam Performance Indicator</h1>
+    <h2>Student Exam Performance Prediction</h2>
+
+<form action="{{ url_for('predict_datapoint') }}" method="post">
+
+    Gender:
+    <select name="gender" required>
+        <option value="male">male</option>
+        <option value="female">female</option>
+    </select><br><br>
+
+    Race or Ethnicity:
+    <select name="race_ethnicity" required>
+        <option value="group A">group A</option>
+        <option value="group B">group B</option>
+        <option value="group C">group C</option>
+        <option value="group D">group D</option>
+        <option value="group E">group E</option>
+
+    </select><br><br>
+
+    Parental Level of Education:
+    <select name="parental_level_of_education" required>
+        <option value="bachelor's degree">Bachelor's degree</option>
+        <option value="some college">Some college</option>
+        <option value="master's degree">Master's degree</option>
+        <option value="associate's degree">Associate's degree</option>
+        <option value="high school">High school</option>
+        <option value="some high school">Some high school</option>
+    </select><br><br>
+
+    Lunch:
+    <select name="lunch" required>
+        <option value="standard">Standard</option>
+        <option value="free/reduced">Free/Reduced</option>
+    </select><br><br>
+
+    Test Preparation Course:
+    <select name="test_preparation_course" required>
+        <option value="completed">Completed</option>
+        <option value="none">None</option>
+    </select><br><br>
+
+    Reading Score:
+    <input type="number" name="reading_score" min="0" max="100" required><br><br>
+
+    Writing Score:
+    <input type="number" name="writing_score" min="0" max="100" required><br><br>
+
+    <button type="submit">Predict Maths Score</button>
+</form>
+
+    <br>
+
+    <h2>THE prediction is {{ results }}</h2>
+
+</body>
+</html>
